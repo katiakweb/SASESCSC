@@ -7,7 +7,7 @@
         // does the sizing calculations for every component
         $maxLoad = $Load*1.5;
         $solarPanel_output = $maxLoad*2;
-        $no_of_Panels = $solarPanel_output/$panelRating;
+        $no_of_Panels = round($solarPanel_output/$panelRating);
         $realPower = $maxLoad;
         $apparentPower = $realPower/P_F;
         echo("Load: ".$Load." W<br>");
