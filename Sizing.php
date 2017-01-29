@@ -1,24 +1,4 @@
-<?php
-    // Stand alone Solar energy system component sizing calculator 
-    // it tells you how many panels you need and the estimated battery capacity needed
-    // Note all physical quantities are in SI units
-    define("P_F",0.8);
-    function sizingCalculator($Load,$panelRating){
-        // does the sizing calculations for every component
-        $maxLoad = $Load*1.5;
-        $solarPanel_output = $maxLoad*2;
-        $no_of_Panels = round($solarPanel_output/$panelRating);
-        $realPower = $maxLoad;
-        $apparentPower = $realPower/P_F;
-        echo("Load: ".$Load." W<br>");
-        echo("Max Load: ".$maxLoad." W<br>");
-        echo("Panel rating: ".$panelRating." W<br>");
-        echo("Number of Panels needed: ".$no_of_Panels."<br>");
-        echo("Inverter rating: ".$apparentPower." VA<br>");
-        return 0;
-    }
-    
-?>
+<!--- Stand alone Solar energy system component sizing calculator it tells you how many panels you need and the estimated battery capacity needednNote all physical quantities are in SI units-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -95,7 +75,7 @@
       </div>
       <div class="starter-template">
             <?php
-              
+               require_once "calc.php";
               if(isset($_GET['Load']) && !empty($_GET['Load']) && isset($_GET['pRating']) && !empty($_GET['pRating'])){
                   $load = $_GET['Load'];
                   $pRating = $_GET['pRating'];
