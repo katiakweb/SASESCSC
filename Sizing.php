@@ -31,7 +31,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
+  <style type="text/css">
+    .txtbx{
+        margin:10px;
+      }
+  </style>
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -62,24 +66,39 @@
         <h1>SASESCSC</h1>
         <p class="lead">Sizing calculator.</p>
         <p class="lead">Type the estimated load (Measured in watts).</p>
+        <p class="lead">Then type in the rated power output of the desired solar panel (Measured in watts).</p>
+        <p class="lead">Finally select the input dc voltage to the inverter.</p>
       </div>
 
       <div class="starter-template">
             <form class="navbar-form starter-template" role="search" action="Sizing.php" method="GET">
                 <div class="form-group">
+                  <div class="row txtbx">
                     <input type="text" class="form-control" placeholder="Load" name="Load">
                     <input type="text" class="form-control" placeholder="Solar Panel rating" name="pRating">
+                    
+                    <select name="batteryVoltage" class="form-control">
+                      <option value="12">12V</option>
+                      <option value="24">24V</option>
+                      <option value="36">36V</option>
+                      <option value="48">48V</option>
+                    </select>
+                  </div>
+                  <div class="row txtbx">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                
             </form>
       </div>
       <div class="starter-template">
             <?php
                require_once "calc.php";
-              if(isset($_GET['Load']) && !empty($_GET['Load']) && isset($_GET['pRating']) && !empty($_GET['pRating'])){
+              if(isset($_GET['Load']) && !empty($_GET['Load']) && isset($_GET['pRating']) && !empty($_GET['pRating']) && !empty($_GET['batteryVoltage'])){
                   $load = $_GET['Load'];
                   $pRating = $_GET['pRating'];
-                  sizingCalculator($load,$pRating);
+                  $batteryVoltage = $_GET['batteryVoltage'];
+                  sizingCalculator($load,$pRating,$batteryVoltage);
               }
               
               

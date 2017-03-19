@@ -5,7 +5,7 @@
     define("P_F",0.8);
     define("Backup_time",12);       // Assuming 12 hours of darkness
     
-    function sizingCalculator($Load,$panelRating){
+    function sizingCalculator($Load,$panelRating,$battVolt){
         // does the sizing calculations for every component
         $maxLoad = $Load*1.5;
         $solarPanel_output = $maxLoad*2;
@@ -13,8 +13,7 @@
         $realPower = $maxLoad;
         $apparentPower = $realPower/P_F;
         // Battery sizing 
-        $battVolt = array(12,24,48);
-        $battVoltage = $battVolt[0];
+        $battVoltage = $battVolt;
         $AH_rating = round(($maxLoad*Backup_time*2)/$battVoltage);
         echo("Load: ".$Load." W<br>");
         echo("Max Load: ".$maxLoad." W<br>");
