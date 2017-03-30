@@ -83,10 +83,9 @@
                       <option value="36">36V</option>
                       <option value="48">48V</option>
                     </select>
-                  </div>
-                  <div class="row txtbx">
                     <button type="submit" class="btn btn-default">Submit</button>
                   </div>
+                  
                 </div>
                 
             </form>
